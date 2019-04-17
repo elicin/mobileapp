@@ -6,7 +6,7 @@
         id        = "com.sheridan.imm.collective"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Waffle Day</name>
 
     <description>
         Hello World sample application that responds to the deviceready event.
