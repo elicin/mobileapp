@@ -1,11 +1,7 @@
 var app = function(app) {  // module pattern      
     app.makeModel = function() {
-        // const m = {
-        //     title:"Mobile App"    
-        // };    
         const m = {};  
         
-        // localStorage.clear();        
         if (localStorage && localStorage.exampleData) {
             m.data = JSON.parse(localStorage.exampleData);
         } else {
