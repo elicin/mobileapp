@@ -9,26 +9,27 @@ var app = function(app) {  // module pattern
         // Or use HotSpots for lots of navigation
         // can simplify with a loop - see MVC example https://zimjs.com/mvc
         const hs = new HotSpots([
-            {page:v.page1, rect:v.page1.logo, call:()=>{zog("clicking on hotspot")}},
-            {page:v.page2, rect:v.page2.logo, call:()=>{v.pages.go(v.page1, "left");}},
+            // {page:v.page1, rect:v.page1.logo, call:()=>{zog("clicking on hotspot")}},
+            // {page:v.page2, rect:v.page2.logo, call:()=>{v.pages.go(v.page1, "left");}},
             
                 // below makes the "Start" button work and slide to the right
 
             // on page 1, click button 2, to slide right into page 2
             {page:v.page1, rect:v.start, call:()=>{v.pages.go(v.page2, "right");}},
-            {page:v.page1, rect:v.page1.tabs.buttons[1], call:()=>{v.pages.go(v.page2, "right");}},
-            {page:v.page1, rect:v.page1.tabs.buttons[2], call:()=>{v.pages.go(v.page3, "right");}},
+            // {page:v.page1, rect:v.page1.tabs.buttons[1], call:()=>{v.pages.go(v.page2, "right");}},
+            // {page:v.page1, rect:v.page1.tabs.buttons[2], call:()=>{v.pages.go(v.page3, "right");}},
 
             // on page 2, click button 1, to slide left into page 1
-            {page:v.page2, rect:v.page2.tabs.buttons[0], call:()=>{v.pages.go(v.page1, "left");}},
-            {page:v.page2, rect:v.page2.tabs.buttons[2], call:()=>{v.pages.go(v.page3, "right");}},
+            // {page:v.page2, rect:v.page2.tabs.buttons[0], call:()=>{v.pages.go(v.page1, "left");}},
+            // {page:v.page2, rect:v.page2.tabs.buttons[2], call:()=>{v.pages.go(v.page3, "right");}},
             {page:v.page2, rect:v.page2.next, call:()=>{v.pages.go(v.page3, "right");}},
 
             // on page 3, 
-            {page:v.page3, rect:v.page3.tabs.buttons[0], call:()=>{v.pages.go(v.page1, "left");}},
-            {page:v.page3, rect:v.page3.tabs.buttons[1], call:()=>{v.pages.go(v.page2, "left");}},
+            // {page:v.page3, rect:v.page3.tabs.buttons[0], call:()=>{v.pages.go(v.page1, "left");}},
+            // {page:v.page3, rect:v.page3.tabs.buttons[1], call:()=>{v.pages.go(v.page2, "left");}},
             {page:v.page3, rect:v.page3.next, call:()=>{v.pages.go(v.page4, "right");}},
 
+            {page:v.page4, rect:v.page4.next, call:()=>{v.pages.go(v.page1, "left");}}
 
         ]);
         hs.show();  
@@ -42,19 +43,21 @@ var app = function(app) {  // module pattern
         zog(pp);
     Ticker.add(function(){
 
+        v.label1.addTo(v.content);
 
         if (v.bakingpowder.hitTestCircle(v.bowl, null, 16)) {
             v.bakingpowder.removeFrom();
             pp++;
             zog(pp);
             if (pp == 6){
-                v.page2.next.center(stage).mov(450,-150)
+                v.page2.next.center(v.content).mov(450,-150)
             }
             if (pp >= 2){
-                v.bowl2.center(stage);
+                zog(v.content);
+                v.bowl2.center(v.content);
             }
             if (pp >= 4){
-                v.bowl3.center(stage);
+                v.bowl3.center(v.content);
             }
             stage.update();
         }
@@ -62,13 +65,14 @@ var app = function(app) {  // module pattern
             v.flour.removeFrom();
             pp++;
             if (pp == 6){
-                v.page2.next.center(stage).mov(450,-150)             
+                v.page2.next.center(v.content).mov(450,-150)             
             }
             if (pp >= 2){
-                v.bowl2.center(stage);
+                zog(v.content);
+                v.bowl2.center(v.content);
             }
             if (pp >= 4){
-                v.bowl3.center(stage);
+                v.bowl3.center(v.content);
             }
             stage.update();
         }
@@ -76,13 +80,14 @@ var app = function(app) {  // module pattern
             v.sugar.removeFrom();
             pp++;
             if (pp == 6){
-                v.page2.next.center(stage).mov(450,-150)             
+                v.page2.next.center(v.content).mov(450,-150)             
             }
             if (pp >= 2){
-                v.bowl2.center(stage);
+                zog(v.content);
+                v.bowl2.center(v.content);
             }
-            if(pp >= 4){
-                v.bowl3.center(stage);
+            if (pp >= 4){
+                v.bowl3.center(v.content);
             }
             stage.update();
         }
@@ -90,13 +95,14 @@ var app = function(app) {  // module pattern
             v.eggs.removeFrom();
             pp++;
             if (pp == 6){
-                v.page2.next.center(stage).mov(450,-150)             
+                v.page2.next.center(v.content).mov(450,-150)             
             }
             if (pp >= 2){
-                v.bowl2.center(stage);
+                zog(v.content);
+                v.bowl2.center(v.content);
             }
-            if(pp >= 4){
-                v.bowl3.center(stage);
+            if (pp >= 4){
+                v.bowl3.center(v.content);
             }
             stage.update();
         }
@@ -104,13 +110,14 @@ var app = function(app) {  // module pattern
             v.water.removeFrom();
             pp++;
             if (pp == 6){
-                v.page2.next.center(stage).mov(450,-150)             
+                v.page2.next.center(v.content).mov(450,-150)             
             }
             if (pp >= 2){
-                v.bowl2.center(stage);
+                zog(v.content);
+                v.bowl2.center(v.content);
             }
-            if(pp >= 4){
-                v.bowl3.center(stage);
+            if (pp >= 4){
+                v.bowl3.center(v.content);
             }
             stage.update();
         }
@@ -118,13 +125,14 @@ var app = function(app) {  // module pattern
             v.vanilla.removeFrom();
             pp++;
             if (pp == 6){
-                v.page2.next.center(stage).mov(450,-150)             
+                v.page2.next.center(v.content).mov(450,-150)             
             }
             if (pp >= 2){
-                v.bowl2.center(stage);
+                zog(v.content);
+                v.bowl2.center(v.content);
             }
-            if(pp >= 4){
-                v.bowl3.center(stage);
+            if (pp >= 4){
+                v.bowl3.center(v.content);
             }
             stage.update();
         } //vanilla hit test if statment
@@ -133,18 +141,23 @@ var app = function(app) {  // module pattern
             v.page2.next.removeFrom();
             v.bowl2.removeFrom();
             v.bowl3.removeFrom();
+            // label1.removeFrom();
             stage.update();
         })
 
 
 // page 3
+        // new Label("Drag the ingredients into the bowl to make the batter", 45, null, "white").center(v.content).mov(0,-300);
+
+        v.label2.addTo(v.contentpg3);
+
         if (v.bowl4.hitTestRect(v.maker)){
             v.bowl4.removeFrom();
             // pp++;
             v.maker.removeFrom();
-            v.makerclosed.center().mov(275,40);
+            v.makerclosed.center(v.contentpg3).mov(286,75);
 
-            v.page3.next.center(stage).mov(450,-150);
+            v.page3.next.center(v.contentpg3).mov(450,-150);
             stage.update();
 
         }
@@ -159,7 +172,19 @@ var app = function(app) {  // module pattern
 // page 4
 // v.smoke1.center();
 
+v.label3.addTo(v.contentpg4);
 
+v.page4.next.center(v.contentpg4)           
+
+v.page4.next.on("click", function(){
+    
+    stage.update();
+})
+
+
+// end2.on("click", function(){
+//     location.reload();
+// })
 
 
     }); //end of ticker
@@ -199,12 +224,12 @@ var app = function(app) {  // module pattern
         // })
             
         
-        // frame.on("resize", () => {  
+        frame.on("resize", () => {  
             
-        //     v.manager.resize();
+            v.manager.resize();
             
-        //     stage.update();
-        // });
+            stage.update();
+        });
                 
         return c;
     }
